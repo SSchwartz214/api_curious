@@ -30,6 +30,26 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+def stub_omniauth
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+    provider: "github",
+    uid: "12345678",
+    info: {
+      email: "seth@aol.com",
+      image: "https://avatars2.githubusercontent.com/u/30695131?v=4",
+      name: "Seth Schwartz",
+      nickname: "SS"
+    },
+    credentials: {
+      token: "abcdefg12345",
+      refresh_token: "12345abcdefg",
+      expires_at: DateTime.now,
+    }
+  })
+end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
