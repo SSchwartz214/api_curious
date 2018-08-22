@@ -1,6 +1,7 @@
 <% if current_user  %>
   <h3>Welcome, <%= "#{current_user.name}" %></h3>
   <p><%= image_tag(current_user.image) %></p>
+  <p> <%= current_user.repos %> </p>
 
   <%= link_to "Logout", logout_path %>
 <% else %>

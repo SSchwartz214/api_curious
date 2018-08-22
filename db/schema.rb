@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20180821012545) do
     t.string "email"
     t.string "image"
     t.string "name"
+    t.string "repos"
     t.string "nickname"
     t.string "token"
     t.string "refresh_token"
