@@ -3,8 +3,8 @@
 
   <p><%= image_tag(current_user.image) %></p>
 
-  <h3>Repositories:</h3>
-  <% @repos.each do |repo| %>
+  <h3>Starred Repositories:</h3>
+  <% @starred_repos.each do |repo| %>
   <ul>
     <li><%= repo.name %></li>
   </ul>
