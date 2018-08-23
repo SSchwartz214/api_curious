@@ -17,6 +17,13 @@
   </ul>
   <% end %>
 
+  <h3>Following:</h3>
+  <% @following.each do |user| %>
+  <ul>
+    <li><%= user.name %></li>
+  </ul>
+  <% end %>
+
   <%= link_to "Logout", logout_path %>
 <% else %>
   <%= link_to "Sign in with GitHub", "/auth/github" %>

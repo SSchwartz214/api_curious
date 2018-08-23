@@ -16,6 +16,10 @@ class GitHubService
     get_url("/users/#{@user.nickname}/followers")
   end
 
+  def find_following
+    get_url("/users/#{@user.nickname}/following")
+  end
+
   def get_url(url)
     response = @conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
@@ -27,5 +31,9 @@ class GitHubService
 
   def self.find_followers(user)
     new(user).find_followers
+  end
+
+  def self.find_following(user)
+    new(user).find_following
   end
 end
