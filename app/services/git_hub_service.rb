@@ -8,8 +8,8 @@ class GitHubService
     end
   end
 
-  def find_repos
-    get_url("/users/#{@user.nickname}/repos")
+  def find_starred_repos
+    get_url("/users/#{@user.nickname}/starred")
   end
 
   def find_followers
@@ -21,16 +21,11 @@ class GitHubService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def self.find_repos(user)
-    new(user).find_repos
+  def self.find_starred_repos(user)
+    new(user).find_starred_repos
   end
 
   def self.find_followers(user)
     new(user).find_followers
   end
-
-  #   @repos = results.map do |result|
-  #     Repo.new(result)
-  #   end
-  # end
 end

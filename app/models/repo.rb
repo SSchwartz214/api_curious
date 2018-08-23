@@ -6,7 +6,7 @@ class Repo
   end
 
   def self.find_all(user)
-    GitHubService.find_repos(user).map do |raw_repo|
+    GitHubService.find_starred_repos(user).map do |raw_repo|
       new(raw_repo)
     end
   end
