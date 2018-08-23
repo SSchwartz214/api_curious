@@ -1,24 +1,29 @@
 <% if current_user %>
   <h3>Welcome, <%= "#{current_user.name}" %></h3>
 
+<div class="avatar">
   <p><%= image_tag(current_user.image) %></p>
+</div>
 
-  <h3>Number of Starred Repositories:</h3>
-  <%= @starred_repos.count %>
+<div class="info">
+  <div class="repos">
+    <h3>Number of Starred Repositories: <%= @starred_repos.count %></h3>
+  </div>
 
   <h3>Followers:</h3>
   <% @followers.each do |follower| %>
-  <ul>
+  <ul class="followers">
     <li><%= follower.name %></li>
   </ul>
   <% end %>
 
   <h3>Following:</h3>
   <% @following.each do |user| %>
-  <ul>
+  <ul class="following">
     <li><%= user.name %></li>
   </ul>
   <% end %>
+</div>
 
   <%= link_to "Logout", logout_path %>
 <% else %>

@@ -40,12 +40,15 @@ def stub_omniauth
       email: "seth@aol.com",
       image: "https://avatars2.githubusercontent.com/u/30695131?v=4",
       name: "Seth Schwartz",
-      nickname: "SS"
+      nickname: "SSchwartz214"
+    },
+    extra: {
+      raw_info: {
+        login: "SSchwartz214"
+      }
     },
     credentials: {
-      token: "abcdefg12345",
-      refresh_token: "12345abcdefg",
-      expires_at: DateTime.now,
+      token: ENV['GITHUB_TEST_TOKEN']
     }
   })
 end

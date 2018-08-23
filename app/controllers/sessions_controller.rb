@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
     session[:id] = user.id
 
     redirect_to root_path
+
   end
 
   def destroy
