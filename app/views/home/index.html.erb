@@ -1,6 +1,12 @@
 <% if current_user  %>
   <h3>Welcome, <%= "#{current_user.name}" %></h3>
   <p><%= image_tag(current_user.image) %></p>
+  <h3>Repositories:</h3>
+  <% @repos.each do |repo| %>
+  <ul>
+    <li><%= repo.name %></>
+  </ul>
+  <% end %>
 
   <%= link_to "Logout", logout_path %>
 <% else %>

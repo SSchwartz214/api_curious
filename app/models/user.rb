@@ -7,6 +7,7 @@ class User < ApplicationRecord
       email: auth[:info][:email],
       image: auth[:info][:image],
       name: auth[:info][:name],
+      repos: auth[:extra][:raw_info][:repos_url],
       nickname: auth[:info][:nickname],
       token: auth[:credentials][:token],
       refresh_token: auth[:credentials][:refresh_token],
