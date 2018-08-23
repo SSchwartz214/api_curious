@@ -1,14 +1,10 @@
-<% if current_user  %>
+<% if current_user %>
   <h3>Welcome, <%= "#{current_user.name}" %></h3>
 
   <p><%= image_tag(current_user.image) %></p>
 
-  <h3>Starred Repositories:</h3>
-  <% @starred_repos.each do |repo| %>
-  <ul>
-    <li><%= repo.name %></li>
-  </ul>
-  <% end %>
+  <h3>Number of Starred Repositories:</h3>
+  <%= @starred_repos.count %>
 
   <h3>Followers:</h3>
   <% @followers.each do |follower| %>
