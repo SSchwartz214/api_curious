@@ -1,8 +1,7 @@
 class HomeController < ApplicationController
   def index
     if current_user
-      repo = Repo.new(current_user)
-      require "pry"; binding.pry
+      @repos = Repo.find_all(current_user)
     end
   end
 end

@@ -16,9 +16,4 @@ class User < ApplicationRecord
     user.save!
     user
   end
-
-  # def get_repos
-  #   response = Faraday.get("https://api.github.com/user/repos?access_token=#{user.token}")
-  #   repo_hash = JSON.parse(response.body)
-  # end
 end

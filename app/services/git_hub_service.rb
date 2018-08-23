@@ -8,13 +8,21 @@ class GitHubService
     end
   end
 
-  def user_repos
-    response = @conn.get("/users/#{@user.nickname}/repos")
-    require "pry"; binding.pry
-    results = JSON.parse(response.body, symbolize_names: true)[:extra][:raw_info][:repos_url]
-
-    @repos = results.map do |result|
-      Repo.new(result)
-    end
+  def find_repos
+    get_url("/users/#{@user.nickname}/repos")
   end
+
+  def get_url(url)
+    response = @conn.get(url)
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def self.find_repos(user)
+    new(user).find_repos
+  end
+
+  #   @repos = results.map do |result|
+  #     Repo.new(result)
+  #   end
+  # end
 end
