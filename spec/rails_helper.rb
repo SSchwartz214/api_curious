@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'webmock/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -40,12 +41,15 @@ def stub_omniauth
       email: "seth@aol.com",
       image: "https://avatars2.githubusercontent.com/u/30695131?v=4",
       name: "Seth Schwartz",
-      nickname: "SS"
+      nickname: "SSchwartz214"
+    },
+    extra: {
+      raw_info: {
+        login: "SSchwartz214"
+      }
     },
     credentials: {
-      token: "abcdefg12345",
-      refresh_token: "12345abcdefg",
-      expires_at: DateTime.now,
+      token: ENV['GITHUB_TEST_TOKEN']
     }
   })
 end
