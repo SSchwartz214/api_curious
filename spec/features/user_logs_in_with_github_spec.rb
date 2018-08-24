@@ -3,18 +3,18 @@ require 'rails_helper'
 RSpec.feature "user logs in" do
   scenario "using github oauth" do
     stub_omniauth
-    mock_starred_repos = '[{"id": 144638183,"name": "rales_engine"},
-                          {"id": 143650074, "name": "bike_share"}
-                        ]'
 
-    stub_request(:get, "https://api.github.com/users/SSchwartz214/starred").
-    to_return(status: 200, body: mock_starred_repos)
+    json_response_1 = File.open("./fixtures/starred_repos.json")
+    stub_request(:any, "https://api.github.com/users/SSchwartz214/starred").
+    to_return(status: 200, body: json_response_1)
 
-    stub_request(:get, "https://api.github.com/users/SSchwartz214/followers").
-    to_return(status: 200, body: mock_starred_repos)
+    json_response_2 = File.open("./fixtures/followers.json")
+    stub_request(:any, "https://api.github.com/users/SSchwartz214/followers").
+    to_return(status: 200, body: json_response_2)
 
-    stub_request(:get, "https://api.github.com/users/SSchwartz214/following").
-    to_return(status: 200, body: mock_starred_repos)
+    json_response_3 = File.open("./fixtures/following.json")
+    stub_request(:any, "https://api.github.com/users/SSchwartz214/following").
+    to_return(status: 200, body: json_response_3)
 
     visit root_path
 
@@ -28,9 +28,9 @@ RSpec.feature "user logs in" do
 
     expect(page).to have_content("Number of Starred Repositories: 2")
 
-    # within (".info") do
-    #   expect(page).to have_css(".followers", count: 3)
-    #   expect(page).to have_css(".following", count: 4)
-    # end
+    within (".info") do
+      expect(page).to have_css(".followers", count: 3)
+      expect(page).to have_css(".following", count: 4)
+    end
   end
 end
